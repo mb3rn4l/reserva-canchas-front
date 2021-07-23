@@ -1,6 +1,6 @@
 <div class="reserva-form">
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
-        
+
         <div class="mb-3 row">
             <label for="id" class="col-sm-3 col-form-label">
                 <span class="text-danger">*</span>
@@ -46,7 +46,7 @@
                     debe ingresar una fecha
                 </div>
                 <div class="text-danger" *ngIf="fechaMenor">
-                    la fecha debe ser igual o mayor a hoy 
+                    la fecha debe ser igual o mayor a hoy
                 </div>
             </div>
         </div>
@@ -72,4 +72,4 @@
             <ng-content select="button"></ng-content>
         </div>
     </form>
-  </div>
+</div>

@@ -16,12 +16,9 @@
       <agenda-calendario [fecha]="date$ | async" (change)="changeDate($event)">
       </agenda-calendario>
 
-      <app-listar-reserva
-        [reservas]="listaReservas$ | async"
-        (cancelarReserva)="cancelarReserva($event)"
-      >
+      <app-listar-reserva [reservas]="listaReservas$ | async" (cancelarReserva)="cancelarReserva($event)">
       </app-listar-reserva>
-    
+
     </div>
   </div>
 </div>

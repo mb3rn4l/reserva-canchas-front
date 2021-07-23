@@ -38,7 +38,7 @@ import { ClienteService } from '../cliente/shared/cliente.service';
     AgendaControlesComponent,
     ListarReservaComponent
 
-  ], 
+  ],
   providers: [ReservaService, NgbActiveModal, CanchaService, ClienteService]
 })
-export class ReservaModule {}
+export class ReservaModule { }

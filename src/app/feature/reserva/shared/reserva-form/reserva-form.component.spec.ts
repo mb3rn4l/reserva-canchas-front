@@ -10,33 +10,34 @@ import { ClienteService } from 'src/app/feature/cliente/shared/cliente.service';
 import { HttpService } from '@core/services/http.service';
 import { of } from 'rxjs';
 
+
 describe('ReservaFormComponent', () => {
   let component: ReservaFormComponent;
   let fixture: ComponentFixture<ReservaFormComponent>;
   let canchaService: CanchaService;
   let clienteService: ClienteService;
 
-  let opcionesCancha = [{id: "1", descripcion: "cancha 1"}, {id: "2", descripcion: "cancha 2"}];
-  let opcionesCliente = [{id: "1", nombre: "pepito 1"}, {id: "2", nombre: "pepito 2"}]
+  let opcionesCancha = [{ id: "1", descripcion: "cancha 1" }, { id: "2", descripcion: "cancha 2" }];
+  let opcionesCliente = [{ id: "1", nombre: "pepito 1" }, { id: "2", nombre: "pepito 2" }]
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReservaFormComponent ],
-      imports: [ 
+      declarations: [ReservaFormComponent],
+      imports: [
         CommonModule,
         HttpClientModule,
         ReactiveFormsModule,
         FormsModule
-       ], 
-       providers: [HttpService, CanchaService, ClienteService ]
+      ],
+      providers: [HttpService, CanchaService, ClienteService]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ReservaFormComponent);
     component = fixture.componentInstance;
-    
+
     canchaService = TestBed.inject(CanchaService);
     spyOn(canchaService, 'consultarOpciones').and.returnValue(
       of(opcionesCancha)
@@ -67,10 +68,10 @@ describe('ReservaFormComponent', () => {
     expect(component.form.valid).toBeFalsy();
   });
 
-  it('formulario invalido cuando la fecha sea menor a la actual', () =>   {
+  it('formulario invalido cuando la fecha sea menor a la actual', () => {
     let fechaActual = new Date();
-    let fechaMenosUnDia = new Date().setDate(fechaActual.getDate()-1);
-    
+    let fechaMenosUnDia = new Date().setDate(fechaActual.getDate() - 1);
+
     expect(component.form.valid).toBeFalsy();
 
     component.form.controls.idCliente.setValue('1');
@@ -84,9 +85,9 @@ describe('ReservaFormComponent', () => {
 
 
   it('deberia ser valido y llamar evento submitted', () => {
-    
+
     spyOn(component.submitted, 'emit').and.callThrough();
-    
+
     component.form.controls.idCliente.setValue('1');
     component.form.controls.idCancha.setValue('1');
     component.form.controls.fecha.setValue(formatDate(new Date(), 'yyyy-MM-dd', 'en'));

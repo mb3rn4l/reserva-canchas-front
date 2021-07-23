@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HttpService } from '@core/services/http.service';
-import { Reserva } from '@reserva/shared/model/reserva';
-import { ReservaService } from '@reserva/shared/reserva.service';
-import { of } from 'rxjs';
-import { ReservaComponent } from "./reserva.component";
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { of } from 'rxjs';
+
+import { HttpService } from '@core/services/http.service';
+import { ReservaService } from '@reserva/shared/reserva.service';
+import { Reserva } from '@reserva/shared/model/reserva';
+import { ReservaComponent } from "@reserva/containers/reserva/reserva.component";
 
 
 describe('reservaComponent', () => {

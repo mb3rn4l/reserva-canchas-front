@@ -1,13 +1,13 @@
 export class ClienteOptions {
-    id: string; 
+    id: string;
     nombre: string;
 }
 
-export class Cliente{
-    id: string; 
+export class Cliente {
+    id: string;
     nombre: string;
     cedula: string;
-    telefono: string; 
-    correo: string; 
+    telefono: string;
+    correo: string;
     tarjetDescuento: any;
 }

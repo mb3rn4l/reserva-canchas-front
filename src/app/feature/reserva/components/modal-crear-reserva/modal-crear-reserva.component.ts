@@ -1,6 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core'; //OnInit, OnDestroy 
-// import { FormGroup, } from '@angular/forms'
+import { Component, EventEmitter, Output } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Component({
   selector: 'modal-crear-reserva',

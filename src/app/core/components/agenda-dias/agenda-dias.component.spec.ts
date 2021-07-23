@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AgendaDiasComponent } from './agenda-dias.component';
 
+
 describe('AgendaDiasComponent', () => {
     let component: AgendaDiasComponent;
     let fixture: ComponentFixture<AgendaDiasComponent>;
@@ -32,7 +33,7 @@ describe('AgendaDiasComponent', () => {
 
     it('deberia emitir evento', () => {
         spyOn(component.cambiarDia, 'emit').and.callThrough();
-        
+
         component.seleccionarDia(4);
 
         expect(component.cambiarDia.emit).toHaveBeenCalledWith(4);

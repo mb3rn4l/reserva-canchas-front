@@ -1,15 +1,17 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { HttpService } from '@core/services/http.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ModalCrearReservaComponent } from './modal-crear-reserva.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { of } from 'rxjs';
+
+import { HttpService } from '@core/services/http.service';
+import { ModalCrearReservaComponent } from './modal-crear-reserva.component';
 import { ReservaFormComponent } from '@reserva/shared/reserva-form/reserva-form.component';
 import { CanchaService } from 'src/app/feature/cancha/shared/cancha.service';
 import { ClienteService } from 'src/app/feature/cliente/shared/cliente.service';
-import { of } from 'rxjs';
+
 
 describe('ModalCrearReservaComponent', () => {
     let component: ModalCrearReservaComponent;

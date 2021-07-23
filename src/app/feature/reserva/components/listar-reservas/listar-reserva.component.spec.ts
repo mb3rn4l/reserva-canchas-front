@@ -1,8 +1,8 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ListarReservaComponent } from './listar-reserva.component';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
+
+import { ListarReservaComponent } from './listar-reserva.component';
 import { Reserva } from '@reserva/shared/model/reserva';
 
 

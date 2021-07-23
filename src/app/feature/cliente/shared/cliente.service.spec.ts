@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'; 
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { ClienteService } from './cliente.service';
+import { HttpService } from '@core-service/http.service';
 import { environment } from 'src/environments/environment';
-import { HttpService } from 'src/app/core/services/http.service';
+import { ClienteService } from './cliente.service';
 import { Cliente } from './model/cliente';
+
 
 describe('ClienteService', () => {
   let httpMock: HttpTestingController;
@@ -12,7 +13,7 @@ describe('ClienteService', () => {
   const apiEndpointClientes = `${environment.endpoint}/clientes`;
 
   beforeEach(() => {
-    
+
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [ClienteService, HttpService]
@@ -26,7 +27,7 @@ describe('ClienteService', () => {
     expect(clienteService).toBeTruthy();
   });
 
-  
+
   it('deberia listar las Clientes para un select', () => {
     const dummyClientes = [
       new Cliente(),

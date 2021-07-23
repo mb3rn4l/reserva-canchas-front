@@ -1,7 +1,9 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CommonModule } from '@angular/common';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AgendaControlesComponent } from './agenda-controles.component';
+
 
 describe('AgendaDiasComponent', () => {
     let component: AgendaControlesComponent;
@@ -31,7 +33,7 @@ describe('AgendaDiasComponent', () => {
 
     it('deberia emitir evento', () => {
         spyOn(component.cambiarFecha, 'emit').and.callThrough();
-        
+
         component.moverFecha(1);
 
         expect(component.offset).toBe(1);

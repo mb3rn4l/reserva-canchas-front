@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
+
 @Component({
   selector: 'agenda-dias',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,7 +24,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 export class AgendaDiasComponent {
 
   dias = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-  
+
   @Input()
   diaSeleccionado: number;
 
@@ -33,5 +34,5 @@ export class AgendaDiasComponent {
   seleccionarDia(index: number) {
     this.cambiarDia.emit(index);
   }
-  
+
 }

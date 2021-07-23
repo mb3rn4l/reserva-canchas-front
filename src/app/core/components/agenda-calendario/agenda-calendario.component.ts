@@ -1,5 +1,6 @@
 import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 
+
 @Component({
   selector: 'agenda-calendario',
   styleUrls: ['agenda-calendario.component.scss'],
@@ -31,7 +32,7 @@ export class AgendaCalendarioComponent implements OnChanges {
   @Output()
   change = new EventEmitter<Date>();
 
-  constructor() {}
+  constructor() { }
 
   ngOnChanges() {
     this.indiceDia = this.getIndiceDia(this.dia);

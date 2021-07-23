@@ -2,26 +2,26 @@
   <div class="card-header text-center">
     <strong>{{reserva.horaInicial}} - {{reserva.horaFinal}} </strong>
   </div>
-  <div class="card-body" 
-  >
+  <div class="card-body">
 
     <div class="container">
       <div class="row gx-2">
         <div class="col-5">
-            <strong>Cancha:</strong> {{reserva.cancha.descripcion}} <br>
-            <strong>Cliente:</strong> {{reserva.cliente.nombre}} <br>
-            <strong>Estado:</strong> {{reserva.estado}} <br>
+          <strong>Cancha:</strong> {{reserva.cancha.descripcion}} <br>
+          <strong>Cliente:</strong> {{reserva.cliente.nombre}} <br>
+          <strong>Estado:</strong> {{reserva.estado}} <br>
         </div>
         <div class="col-5">
-          <strong>Valor Cancha:</strong>{{reserva.descuento | currency:"CO":"$":"1.0"}} <br>  
+          <strong>Valor Cancha:</strong>{{reserva.descuento | currency:"CO":"$":"1.0"}} <br>
           <strong>Descuento:</strong>{{reserva.descuento | currency:"CO":"$":"1.0"}} <br>
-            <strong>Valor de pago:</strong>{{reserva.valorDePago | currency:"CO":"$":"1.0"}}
+          <strong>Valor de pago:</strong>{{reserva.valorDePago | currency:"CO":"$":"1.0"}}
         </div>
         <div class="col-1 text-center pt-4">
-            <button id="{{'cancelar-'+reserva.id}}" class="btn btn-sm btn-primary" type="button" (click)="onCancelarReserva(reserva.id)">Cancelar</button>
+          <button id="{{'cancelar-'+reserva.id}}" class="btn btn-sm btn-primary" type="button"
+            (click)="onCancelarReserva(reserva.id)">Cancelar</button>
         </div>
       </div>
     </div>
-    
+
   </div>
 </div>

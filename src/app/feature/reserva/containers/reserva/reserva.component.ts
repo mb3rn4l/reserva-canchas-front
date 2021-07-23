@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
-import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';  
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 import { ReservaService } from '@reserva/shared/reserva.service';
 import { Reserva } from '@reserva/shared/model/reserva';
 import { ModalCrearReservaComponent } from '@reserva/components/modal-crear-reserva/modal-crear-reserva.component';
+
 
 @Component({
   selector: 'reserva',
@@ -20,21 +21,21 @@ export class ReservaComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
-    private reservaService: ReservaService, 
+    private reservaService: ReservaService,
     private modalService: NgbModal
-  ) {}
+  ) { }
 
   changeDate(date: Date) {
     this.reservaService.actualizarFecha(date);
   }
 
-  crearReserva(data){
-    this.reservaService.guardar(data).subscribe(()=>{
+  crearReserva(data) {
+    this.reservaService.guardar(data).subscribe(() => {
       this.cerrarModalReserva();
     });
   }
 
-  cancelarReserva(id: number){
+  cancelarReserva(id: number) {
     this.reservaService.cancelar(id).subscribe();
   }
 
@@ -51,7 +52,7 @@ export class ReservaComponent implements OnInit, OnDestroy {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  abrirModalCrearReserva(){
+  abrirModalCrearReserva() {
     this.refModalCrear = this.modalService.open(ModalCrearReservaComponent);
     this.refModalCrear.componentInstance.crearReserva.subscribe((data) => {
       this.crearReserva(data)

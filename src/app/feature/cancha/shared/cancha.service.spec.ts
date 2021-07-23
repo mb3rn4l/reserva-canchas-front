@@ -1,10 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'; 
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
-import { CanchaService } from './cancha.service';
+import { HttpService } from '@core-service/http.service';
 import { environment } from 'src/environments/environment';
-import { HttpService } from 'src/app/core/services/http.service';
+import { CanchaService } from './cancha.service';
 import { Cancha } from './model/cancha';
+
 
 describe('CanchaService', () => {
   let httpMock: HttpTestingController;
@@ -12,7 +13,7 @@ describe('CanchaService', () => {
   const apiEndpointCanchas = `${environment.endpoint}/canchas`;
 
   beforeEach(() => {
-    
+
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [CanchaService, HttpService]
@@ -26,7 +27,7 @@ describe('CanchaService', () => {
     expect(canchaService).toBeTruthy();
   });
 
-  
+
   it('deberia listar las canchas para un select', () => {
     const dummyCanchas = [
       new Cancha(),

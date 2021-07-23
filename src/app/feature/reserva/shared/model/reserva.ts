@@ -1,11 +1,11 @@
-// import { Cancha } from "src/app/feature/cancha/shared/model/cancha";
-// import { Cliente } from "src/app/feature/cliente/shared/model/cliente";
+import { Cancha } from "src/app/feature/cancha/shared/model/cancha";
+import { Cliente } from "src/app/feature/cliente/shared/model/cliente";
 
 
 export class Reserva {
     id: number;
-    cancha: { descripcion: string; };
-    cliente: { nombre: string; };
+    cancha: Cancha;
+    cliente: Cliente;
     fecha: Date;
     horaInicial: number;
     horaFinal: number;

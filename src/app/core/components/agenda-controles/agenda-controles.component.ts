@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 
+
 @Component({
   selector: 'agenda-controles',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -25,7 +26,7 @@ import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from 
 export class AgendaControlesComponent {
 
   offset = 0;
-  
+
   @Input()
   fecha: Date;
 

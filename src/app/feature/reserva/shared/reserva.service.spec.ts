@@ -1,13 +1,14 @@
 
 import { TestBed } from '@angular/core/testing';
-import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing'; 
-
-import { ReservaService } from './reserva.service';
-import { environment } from 'src/environments/environment';
-import { HttpService } from 'src/app/core/services/http.service';
 import { HttpResponse } from '@angular/common/http';
-import { Reserva } from './model/reserva';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+
+import { environment } from 'src/environments/environment';
+import { HttpService } from '@core/services/http.service';
+import { ReservaService } from './reserva.service';
+import { Reserva } from './model/reserva';
+
 
 describe('ReservaService', () => {
   let httpMock: HttpTestingController;
@@ -19,7 +20,7 @@ describe('ReservaService', () => {
   ];
 
   beforeEach(() => {
-    
+
     const injector = TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [ReservaService, HttpService]
@@ -33,13 +34,8 @@ describe('ReservaService', () => {
     expect(reservaService).toBeTruthy();
   });
 
-  
-  it('deberia listar reservas', () => {
-    // const dummyReservas = [
-    //   new Reserva(1, 'cancha 1', "cliente 1", "2021-07-16", 16, 17, "REGISTRADA", 0, 80000, "2021-07-16T12:39:03"),
-    //   new Reserva(2, 'cancha 1', "cliente 1", "2021-07-16", 16, 17, "REGISTRADA", 0, 80000, "2021-07-16T12:39:03")
-    // ];
 
+  it('deberia listar reservas', () => {
     const fecha = new Date().toISOString();
 
     service.consultar(fecha).subscribe(reservas => {
@@ -51,31 +47,31 @@ describe('ReservaService', () => {
     expect(req.request.method).toBe('GET');
     req.flush(dummyReservas);
   });
-  
+
   it('deberia crear una reserva', () => {
     spyOn(service, 'consultar').and.returnValue(
       of(dummyReservas)
     );
     service.reservas$.subscribe();
-    
+
     const dummyreserva = new Reserva(1, 'cancha 1', "cliente 1", "2021-07-16", 16, 17, "REGISTRADA", 0, 80000, "2021-07-16T12:39:03");
-    
+
     service.guardar(dummyreserva).subscribe((respuesta: any) => {
-      expect(respuesta.hasOwnProperty('valor')).toBeTruthy();  
+      expect(respuesta.hasOwnProperty('valor')).toBeTruthy();
 
       // prueba que se agregue una reserva a la lista
-      service.listaReservas$.subscribe(lista=>{
+      service.listaReservas$.subscribe(lista => {
         expect(lista.length).toEqual(3);
       })
     });
 
     const req = httpMock.expectOne(apiEndpointReservas);
     expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<any>({body: {valor: 1}}));
+    req.event(new HttpResponse<any>({ body: { valor: 1 } }));
   });
 
-  it('deberia cancelar una reserva', () => {    
-    
+  it('deberia cancelar una reserva', () => {
+
 
     spyOn(service, 'consultar').and.returnValue(
       of(dummyReservas)
@@ -88,18 +84,18 @@ describe('ReservaService', () => {
       expect(respuesta).toEqual(true);
 
       //prueba que se actualice la lista de reservas 
-      service.listaReservas$.subscribe(lista=>{
-        let actualizada: Reserva = lista.find((reserva) => { 
-          return reserva.id == 1 
+      service.listaReservas$.subscribe(lista => {
+        let actualizada: Reserva = lista.find((reserva) => {
+          return reserva.id == 1
         });
 
         expect(actualizada.estado).toEqual('CANCELADA');
       })
 
     });
-    const req = httpMock.expectOne(`${apiEndpointReservas}/${id}`);
+    const req = httpMock.expectOne(`${apiEndpointReservas}/cancelar/${id}`);
     expect(req.request.method).toBe('PATCH');
-    req.event(new HttpResponse<any>({body: true}));
+    req.event(new HttpResponse<any>({ body: true }));
   });
 
 });
