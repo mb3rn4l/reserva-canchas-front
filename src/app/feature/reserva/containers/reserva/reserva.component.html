@@ -1,0 +1,27 @@
+<div class="mt-5 container">
+  <div class="row">
+    <div class="col">
+      <h3>Agenda de reservas</h3>
+    </div>
+    <div class="col">
+      <div class=" d-grid gap-2 col-4 ms-auto">
+        <button id="agregar-reserva" class="btn btn-primary" (click)="abrirModalCrearReserva()">
+          Agregar reserva
+        </button>
+      </div>
+    </div>
+
+    <div class="schedule">
+
+      <agenda-calendario [fecha]="date$ | async" (change)="changeDate($event)">
+      </agenda-calendario>
+
+      <app-listar-reserva
+        [reservas]="listaReservas$ | async"
+        (cancelarReserva)="cancelarReserva($event)"
+      >
+      </app-listar-reserva>
+    
+    </div>
+  </div>
+</div>

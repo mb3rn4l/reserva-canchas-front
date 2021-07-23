@@ -1,0 +1,75 @@
+<div class="reserva-form">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        
+        <div class="mb-3 row">
+            <label for="id" class="col-sm-3 col-form-label">
+                <span class="text-danger">*</span>
+                Cancha
+            </label>
+            <div class="col-sm-9">
+                <select class="form-select" id="idCancha" formControlName="idCancha">
+                    <option *ngFor="let opcionCancha of opcionesCancha$ | async" [ngValue]="opcionCancha.id">
+                        {{ opcionCancha.descripcion }}
+                    </option>
+                </select>
+                <div class="text-danger" *ngIf="idCanchaObligatorio">
+                    debe ingresar una cancha
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="id" class="col-sm-3 col-form-label">
+                <span class="text-danger">*</span>
+                Cliente:
+            </label>
+            <div class="col-sm-9">
+                <select class="form-select" id="idCliente" formControlName="idCliente">
+                    <option *ngFor="let opcionCliente of opcionesCliente$ | async " [ngValue]="opcionCliente.id">
+                        {{ opcionCliente.nombre }}
+                    </option>
+                </select>
+                <div class="text-danger" *ngIf="idClienteObligatorio">
+                    debe ingresar un cliente
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="id" class="col-sm-3 col-form-label">
+                <span class="text-danger">*</span>
+                Fecha:
+            </label>
+            <div class="col-sm-9">
+                <input type="date" class="form-control" id="fecha" formControlName="fecha">
+                <div class="text-danger" *ngIf="fechaObligatorio">
+                    debe ingresar una fecha
+                </div>
+                <div class="text-danger" *ngIf="fechaMenor">
+                    la fecha debe ser igual o mayor a hoy 
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 row">
+            <label for="id" class="col-sm-3 col-form-label">
+                <span class="text-danger">*</span>
+                Hora:
+            </label>
+            <div class="col-sm-9">
+                <select class="form-select" id="horaInicial" formControlName="horaInicial">
+                    <option *ngFor="let hora of horas" [ngValue]="hora.valor">
+                        {{ hora.descripcion }}
+                    </option>
+                </select>
+                <div class="text-danger" *ngIf="horaInicialObligatorio">
+                    debe ingresar una hora
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-3 d-grid gap-2 col-2 mx-auto">
+            <ng-content select="button"></ng-content>
+        </div>
+    </form>
+  </div>
