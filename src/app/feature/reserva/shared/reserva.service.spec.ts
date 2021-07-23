@@ -95,7 +95,7 @@ describe('ReservaService', () => {
     });
     const req = httpMock.expectOne(`${apiEndpointReservas}/cancelar/${id}`);
     expect(req.request.method).toBe('PATCH');
-    req.event(new HttpResponse<any>({ body: true }));
+    req.event(new HttpResponse<any>({ body: true })); 
   });
 
 });
